@@ -1,7 +1,5 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using System.Xml;
-
-
 
 // recupero stazioni
 var stazs = new XmlDocument();
@@ -61,12 +59,12 @@ foreach (var treno in treniFn)
     {
         var num = treno.First().num;
         var fermate = new List<Fermata>();
-        var fermateToDo = treno.Where(x => x.tempo != -2).OrderBy((x) => x.tempo).GroupBy(x => new { x.stazione });
+        var fermateToDo = treno.Where(x => x.tempo >= 0).OrderBy((x) => x.tempo).GroupBy(x => new { x.stazione });
         for (int i = 0; i < fermateToDo.Count(); i++)
         {
             var cr = fermateToDo.ElementAt(i);
             var crn = cr.Last();
-            fermate.Add(new Fermata { id = crn.stazione, nome = dict[crn.stazione], oraPart = $"{(int)crn.tempo / 60}:{crn.tempo % 60}" });
+            fermate.Add(new Fermata { id = crn.stazione, nome = dict[crn.stazione], oraPart = $"{((int)crn.tempo / 60).ToString("00")}:{(crn.tempo % 60).ToString("00")}" });
         }
         treniList.Add(new Treno { num = num, fermate = fermate });
     }));
@@ -92,4 +90,3 @@ public class Fermata
     public string nome;
     public string oraPart;
 }
-

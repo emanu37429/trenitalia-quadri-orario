@@ -20,6 +20,7 @@ Questo è tutto quel che ho capito. Probabilmente studiando di più era possibil
 Vi lascio il sorgente del programma che avevo fatto per ottenere una lista in JSON partendo da questi dati. 
 
 - Update
+
 Quando il tempo è -1 o -2 vuol dire che il treno non ferma in una stazione
 
 Ho realizzato anche che, se ci sono indicati treni in coincidenza, non vedo modo di distinguere fermate effettive del treno in esame e quelle del treno in coincidenza, quindi il programma li considera come fossero fermate dello stesso treno. Servirebbero rifiniture, ma non trovo come fare...
